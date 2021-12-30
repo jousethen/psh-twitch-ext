@@ -6,7 +6,8 @@ const Panel = props => {
   const [tournamentFound, setTournamentFound] = useState(false)
 
   const onTournamentSubmit = async e => {
-    setTournamentFound = true
+    e.preventDefault()
+    setTournamentFound(true)
     console.log(tournamentFound)
   }
   return (
