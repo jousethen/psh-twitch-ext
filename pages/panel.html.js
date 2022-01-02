@@ -5,7 +5,7 @@ import TournamentSearch from "../components/TournamentSearch";
 const Panel = props => {
   return (
     <>
-      Panel
+      Pplayer a vs player b
     </>
   )
 }
