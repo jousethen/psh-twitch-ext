@@ -9,7 +9,7 @@ const TournamentSearch = (props) => {
       <input
         onChange={e => setSearchText(e.target.value)}
         type="search"
-        aria-label="Search"
+        aria-label="Tournament Link"
         width="50px">
       </input>
       <button className="btn btn-outline-success" type="submit">Search</button>
