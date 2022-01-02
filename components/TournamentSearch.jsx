@@ -5,7 +5,7 @@ const TournamentSearch = (props) => {
 
   return (
     <form className="tSearch"
-      onSubmit={props.onTournamentSubmit}>
+      onSubmit={(e) => props.onTournamentSubmit(e, searchText)}>
       <input
         onChange={e => setSearchText(e.target.value)}
         type="search"
