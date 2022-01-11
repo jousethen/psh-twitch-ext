@@ -35,6 +35,7 @@ const LiveConfig = props => {
     console.log(result)
 
     //Set State with all players so it can be passed to component allowing you to choose Max Two players
+    setAllPlayers()
   }
 
   return (
