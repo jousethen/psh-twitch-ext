@@ -32,10 +32,10 @@ const LiveConfig = props => {
     )
 
     const result = await res.json()
-    console.log(result)
 
     //Set State with all players so it can be passed to component allowing you to choose Max Two players
-    setAllPlayers()
+    setAllPlayers(result.data.tournament.participants.nodes);
+    console.log(allPlayers)
   }
 
   return (
