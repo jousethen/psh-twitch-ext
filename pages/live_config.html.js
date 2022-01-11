@@ -9,7 +9,7 @@ const LiveConfig = props => {
 
   const onTournamentSubmit = async (e, slug) => {
     e.preventDefault()
-    console.log(process.env)
+    console.log(process.env.SMASHGGKEY)
     //Get Tournament Slug From URL
     slug = slug.substring(slug.indexOf("tournament/") + 11)
     //Delete everything after the slug

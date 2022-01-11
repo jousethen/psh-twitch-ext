@@ -4,6 +4,8 @@ module.exports = {
   reactStrictMode: true,
   env: {
     STATIC_PREFIX: isProduction ? "./static" : "/static",
+    SMASHGGKEY: process.env.SMASHGGKEY,
+    APIURL: process.env.APIURL
   },
   exportPathMap: async (
     defaultPathMap,
