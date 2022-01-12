@@ -38,13 +38,25 @@ const LiveConfig = props => {
     console.log(allPlayers)
   }
 
-  return (
-    <>
-      <Layout>
-        <TournamentSearch onTournamentSubmit={onTournamentSubmit} />
-      </Layout>
-    </>
-  )
+  if (allPlayers) {
+    return (
+      <>
+        <Layout>
+          <PlayerContainer players={allPlayers} />
+        </Layout>
+      </>
+    )
+  }
+  else {
+    return (
+      <>
+        <Layout>
+          <TournamentSearch onTournamentSubmit={onTournamentSubmit} />
+        </Layout>
+      </>
+    )
+  }
+
 }
 
 
