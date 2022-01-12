@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import React, { useState, useEffect } from 'react'
 import TournamentSearch from "../components/TournamentSearch";
 import { fetchPlayers } from "../lib/queries";
+import PlayerContainer from "../components/PlayerContainer";
 
 const LiveConfig = props => {
   const [tournamentSlug, setTournamentSlug] = useState('')
@@ -33,12 +34,23 @@ const LiveConfig = props => {
 
     const result = await res.json()
 
+    //sort results 
+    let sortedResults = result.data.tournament.participants.nodes.sort((a, b) => {
+      if (a.gamerTag < b.gamerTag) {
+        return -1
+      }
+      else {
+        return 1
+      }
+    })
+
+    console.log(sortedResults)
     //Set State with all players so it can be passed to component allowing you to choose Max Two players
-    setAllPlayers(result.data.tournament.participants.nodes);
+    setAllPlayers(sortedResults);
     console.log(allPlayers)
   }
 
-  if (allPlayers) {
+  if (allPlayers.length !== 0) {
     return (
       <>
         <Layout>
