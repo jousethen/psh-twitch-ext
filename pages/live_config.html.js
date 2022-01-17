@@ -34,28 +34,16 @@ const LiveConfig = props => {
 
     const result = await res.json()
 
-    //sort results 
-    let sortedResults = result.data.tournament.participants.nodes.sort((a, b) => {
-      if (a.gamerTag < b.gamerTag) {
-        return -1
-      }
-      else {
-        return 1
-      }
-    })
-
-    console.log(sortedResults)
+    console.log(result.data.tournament.streamQueue[0].sets[0].slots)
     //Set State with all players so it can be passed to component allowing you to choose Max Two players
-    setAllPlayers(sortedResults);
+    setAllPlayers(result.data.tournament.streamQueue[0].sets[0].slots);
     console.log(allPlayers)
   }
 
   if (allPlayers.length !== 0) {
     return (
       <>
-        <Layout>
-          <PlayerContainer players={allPlayers} />
-        </Layout>
+
       </>
     )
   }
