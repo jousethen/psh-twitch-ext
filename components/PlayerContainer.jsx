@@ -14,7 +14,9 @@ const PlayerContainer = (props) => {
 
       <ul className="player-list">
         {props.players.map(player => (
-          <li key={player.player.id}>{player.gamerTag}</li>
+          <li key={player.player.id} onClick={() => {
+            console.log(player.gamerTag)
+          }}>{player.gamerTag}</li>
         ))}
       </ul>
 
