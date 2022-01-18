@@ -6,7 +6,7 @@ import PlayerContainer from "../components/PlayerContainer";
 
 const LiveConfig = props => {
   const [tournamentSlug, setTournamentSlug] = useState('')
-  const [allPlayers, setAllPlayers] = useState([])
+  const [players, setPlayers] = useState([])
 
   const onTournamentSubmit = async (e, slug) => {
     e.preventDefault()
@@ -36,14 +36,17 @@ const LiveConfig = props => {
 
     console.log(result.data.tournament.streamQueue[0].sets[0].slots)
     //Set State with all players so it can be passed to component allowing you to choose Max Two players
-    setAllPlayers(result.data.tournament.streamQueue[0].sets[0].slots);
-    console.log(allPlayers)
+    setPlayers(result.data.tournament.streamQueue[0].sets[0].slots);
+    setTournamentSlug(slug)
+    console.log(players)
   }
 
-  if (allPlayers.length !== 0) {
+  if (players.length !== 0) {
     return (
       <>
-
+        <Layout>
+          <PlayerContainer players={players} slug={tournamentSlug} />
+        </Layout>
       </>
     )
   }
