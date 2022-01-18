@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { fetchPlayers } from '../lib/queries'
+import React, { useState, useEffect } from 'react'
+import { fetchPlayers, fetchSets } from '../lib/queries'
 
 const PlayerContainer = (props) => {
   const [player1, setPlayer1] = useState(props.players[0].entrant)
@@ -30,12 +30,15 @@ const PlayerContainer = (props) => {
     setPlayer2(result.data.tournament.streamQueue[0].sets[0].slots[1].entrant);
   }
 
+  useEffect(() => {
+
+  });
+
   return (
     <>
       <h3>{player1.name} <span style={{ color: "red" }}>VS</span> {player2.name}</h3>
       <button className="btn btn-outline-info" onClick={refresh}>Refresh</button>
-
-
+      <button className="btn btn-outline-info" onClick={refresh}>Refresh</button>
     </>
   )
 }
