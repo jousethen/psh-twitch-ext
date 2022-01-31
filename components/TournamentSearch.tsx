@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 
-const TournamentSearch = (props) => {
+type TournamentSearchProps = {
+  onTournamentSubmit: (e: React.SyntheticEvent, searchText: string) => void
+}
+
+const TournamentSearch = (props: TournamentSearchProps) => {
   const [searchText, setSearchText] = useState('')
 
   return (
