@@ -1,18 +1,20 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable @next/next/no-sync-scripts */
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/globals.css";
 import Head from "next/head";
 
 import { useEffect } from "react";
+import { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap");
   }, []);
 
   return (
     <>
-      <Head>
+      <Head children={undefined}>
         <meta charSet="UTF-8" />
         <meta
           name="viewport"
