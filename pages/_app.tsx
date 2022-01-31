@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head children={undefined}>
+      <Head>
         <meta charSet="UTF-8" />
         <meta
           name="viewport"
