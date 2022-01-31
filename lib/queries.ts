@@ -1,4 +1,4 @@
-export const fetchPlayers = (slug) => {
+export const fetchPlayers = (slug: string) => {
 
   return [`query Attendees($tourneySlug: String!) {
   tournament(slug: $tourneySlug) {
@@ -27,7 +27,7 @@ export const fetchPlayers = (slug) => {
 
 }
 
-export const fetchSets = (slug) => {
+export const fetchSets = (slug: string) => {
 
   return [`query Users($slug: String, $pid: [ID]) {
         user(slug: $slug) {
