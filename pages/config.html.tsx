@@ -3,7 +3,7 @@ import React from "react"
 type Props = {
 }
 
-const Config: React.FC<Props> = (props) => {
+const Config = (props: Props) => {
 
   return (
     <>
