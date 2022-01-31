@@ -4,11 +4,11 @@ import TournamentSearch from "../components/TournamentSearch";
 import { fetchPlayers } from "../lib/queries";
 import PlayerContainer from "../components/PlayerContainer";
 
-const LiveConfig = props => {
+const LiveConfig = () => {
   const [tournamentSlug, setTournamentSlug] = useState('')
   const [players, setPlayers] = useState([])
 
-  const onTournamentSubmit = async (e, slug) => {
+  const onTournamentSubmit = async (e: React.SyntheticEvent, slug: string) => {
     e.preventDefault()
 
     //Get Tournament Slug From URL
