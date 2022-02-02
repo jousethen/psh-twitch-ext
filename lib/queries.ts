@@ -52,9 +52,7 @@ export const fetchSets = (pid: string) => {
     }
   }
 }`, {
-      slug: `${slug}`,
-      pid: [`${pid}`],
-      gameID: `${gameID}`
+      pid: [`${pid}`]
     }]
 
 }

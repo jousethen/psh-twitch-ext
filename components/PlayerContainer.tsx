@@ -39,7 +39,7 @@ const PlayerContainer = (props: PlayerContainerProps) => {
     e.preventDefault()
 
     // Fetch Sets Between 2 Players
-    const [query, variables] = fetchSets(player1.participants[0].user.slug, player2.participants[0].player.id, "33945")
+    const [query, variables] = fetchSets(player2.participants[0].player.id)
     const res = await fetch(
       process.env.APIURL,
       {
