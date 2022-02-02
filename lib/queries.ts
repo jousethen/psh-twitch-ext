@@ -10,6 +10,7 @@ export const fetchPlayers = (slug: string) => {
           entrant {
             name
             participants {
+              id
               user{
                 slug
               }
@@ -27,27 +28,30 @@ export const fetchPlayers = (slug: string) => {
 
 }
 
-export const fetchSets = (slug: string) => {
+export const fetchSets = (pid: string) => {
 
-  return [`query Users($slug: String, $pid: [ID]) {
-        user(slug: $slug) {
-          discriminator
-          events(query: { page: 1, perPage: 100, filter: { videogameId: [33945] } }) {
-            nodes {
-              tournament{
-                name
-                startAt
-              }
-              sets(filters: { playerIds: $pid }) {
-                nodes {
-                  id
-                  displayScore
-                }
-              }
-            }
+  return [`query Sets ($pid: ID!){
+  player(id: $pid) {
+    id
+    sets(perPage: 100, page: 1){
+      nodes {
+        id
+        displayScore
+        event {
+          id
+          name
+          videogame{
+            id
+          }
+          tournament {
+            name
+            startAt
           }
         }
-      }`, {
+      }
+    }
+  }
+}`, {
       slug: `${slug}`,
       pid: [`${pid}`],
       gameID: `${gameID}`

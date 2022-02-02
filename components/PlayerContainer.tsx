@@ -8,6 +8,7 @@ type PlayerContainerProps = {
 const PlayerContainer = (props: PlayerContainerProps) => {
   const [player1, setPlayer1] = useState(props.players[0].entrant)
   const [player2, setPlayer2] = useState(props.players[1].entrant)
+  const [matches, setMatches] = useState([])
 
   const refresh = async () => {
     const [query, variables] = fetchPlayers(props.slug)
@@ -37,18 +38,39 @@ const PlayerContainer = (props: PlayerContainerProps) => {
   const onDisplaySubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
 
-    //Submit Post to API that will store the matches 
-    try {
-      const body = { title, content, authorEmail }
-      await fetch(`http://localhost:3000/api/post`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      })
-      await Router.push('/drafts')
-    } catch (error) {
-      console.error(error)
-    }
+    // Fetch Sets Between 2 Players
+    const [query, variables] = fetchSets(player1.participants[0].user.slug, player2.participants[0].player.id, "33945")
+    const res = await fetch(
+      process.env.APIURL,
+      {
+        body: JSON.stringify({
+          query: query,
+          variables: variables
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.SMASHGGKEY}`
+        },
+        method: 'POST'
+      }
+    )
+
+    const result = await res.json()
+
+    console.log(result)
+
+    // //Submit Post to API that will store the matches 
+    // try {
+    //   const body = { matches }
+    //   await fetch(`http://localhost:3000/api/matches`, {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(body),
+    //   })
+
+    // } catch (error) {
+    //   console.error(error)
+    // }
 
   }
 
