@@ -47,6 +47,10 @@ export const fetchSets = (slug: string) => {
             }
           }
         }
-      }`, { tourneySlug: `${slug}` }]
+      }`, {
+      slug: `${slug}`,
+      pid: [`${pid}`],
+      gameID: `${gameID}`
+    }]
 
 }

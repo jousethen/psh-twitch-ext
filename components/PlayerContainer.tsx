@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { fetchPlayers, fetchSets } from '../lib/queries'
 
-const PlayerContainer = (props) => {
+type PlayerContainerProps = {
+  players: any[],
+  slug: string
+}
+const PlayerContainer = (props: PlayerContainerProps) => {
   const [player1, setPlayer1] = useState(props.players[0].entrant)
   const [player2, setPlayer2] = useState(props.players[1].entrant)
 
@@ -30,15 +34,29 @@ const PlayerContainer = (props) => {
     setPlayer2(result.data.tournament.streamQueue[0].sets[0].slots[1].entrant);
   }
 
-  useEffect(() => {
+  const onDisplaySubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
 
-  });
+    //Submit Post to API that will store the matches 
+    try {
+      const body = { title, content, authorEmail }
+      await fetch(`http://localhost:3000/api/post`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      await Router.push('/drafts')
+    } catch (error) {
+      console.error(error)
+    }
+
+  }
 
   return (
     <>
       <h3>{player1.name} <span style={{ color: "red" }}>VS</span> {player2.name}</h3>
       <button className="btn btn-outline-info" onClick={refresh}>Refresh</button>
-      <button className="btn btn-outline-info" onClick={refresh}>Refresh</button>
+      <button className="btn btn-outline-primary" onClick={onDisplaySubmit}>Display</button>
     </>
   )
 }
