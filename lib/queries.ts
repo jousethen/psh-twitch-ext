@@ -33,7 +33,7 @@ export const fetchSets = (pid: string) => {
   return [`query Sets ($pid: ID!){
   player(id: $pid) {
     id
-    sets(perPage: 100, page: 1){
+    sets(perPage: 400, page: 1){
       nodes {
         id
         displayScore
@@ -52,7 +52,7 @@ export const fetchSets = (pid: string) => {
     }
   }
 }`, {
-      pid: [`${pid}`]
+      pid: `${pid}`
     }]
 
 }

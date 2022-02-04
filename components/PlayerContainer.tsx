@@ -57,8 +57,15 @@ const PlayerContainer = (props: PlayerContainerProps) => {
 
     const result = await res.json()
 
-    console.log(result)
+    setMatches(result.data.player.sets.nodes.filter((set: any) => {
+      console.log(set.displayScore)
+      if (set.displayScore && set.displayScore.includes(player1.name)) {
+        return set;
+      }
+    }))
 
+
+    console.log(matches)
     // //Submit Post to API that will store the matches 
     // try {
     //   const body = { matches }
